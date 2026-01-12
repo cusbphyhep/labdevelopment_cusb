@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Information of internship and Master’s Students </title>
+
+    <style>
+        /* ----------- ROOT & RESET ----------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg: #c0c57e;
+            --card-bg: #dde6e6e9;
+            --primary: #060425;
+            --text: #1f2937;
+            --muted: #0d4ecf;
+            --badge-bg-intern: #2cccc4;
+            --badge-text-intern: var(--primary);
+            --badge-bg-master: #b5c1c2;
+            --badge-text-master: #001014;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* ----------- HERO ----------- */
+
+
+        /* ----------- HERO WITH LOGO ----------- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #160b29);
+            padding: 10px 20px;
+            color: #ffffff;
+        }
+
+        /* Flex layout */
+        .hero-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        /* University logo */
+        .hero-logo {
+            width: 90px;
+            height: auto;
+            border-radius: 8px;
+            background: #e3b2b2;
+            padding: 6px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Text styles */
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+
+        /* ----------- SECTIONS ----------- */
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            display: block;
+            margin-top: 8px;
+            border-radius: 5px;
+        }
+
+        /* ----------- GRID ----------- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 35px;
+        }
+
+        /* ----------- CARD ----------- */
+        /* .card { */
+        /* background: var(--card-bg); */
+        /* border-radius: 16px; */
+        /* padding: 25px 20px; */
+        /* box-shadow: 0 12px 30px rgba(23, 1, 1, 0.794); */
+        /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+        /* position: relative; */
+        /* text-align: center; */
+        /* } */
+
+        /* .card:hover { */
+        /* transform: translateY(-2px); */
+        /* box-shadow: 0 18px 45px rgba(3, 16, 19, 0.961); */
+        /* } */
+
+        /* ----------- AVATAR ----------- */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px auto;
+            border: 3px solid rgba(130, 185, 198, 0.918);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ddd;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card:hover .avatar {
+            transform: scale(1.1);
+            border-color: var(--primary);
+        }
+
+        /* ----------- BADGE ----------- */
+        /* .badge { */
+        /* position: absolute; */
+        /* top: 5px; */
+        /* right: 5px; */
+        /* padding: 2px 10px; */
+        /* border-radius: 20px; */
+        /* font-size: 0.75rem; */
+        /* font-weight: 700; */
+        /* user-select: none; */
+        /* } */
+
+        .badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 14px;
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+
+        .avatar {
+            display: flex;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .avatar img {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            background: #fff;
+        }
+
+
+        /* Internship badge styling */
+        .badge.intern {
+            background-color: var(--badge-bg-intern);
+            color: var(--badge-text-intern);
+        }
+
+        /* Master's badge styling */
+        .badge.master {
+            background-color: var(--badge-bg-master);
+            color: var(--badge-text-master);
+        }
+
+        /* ----------- TEXT ----------- */
+        h3 {
+            margin-bottom: 8px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+
+        .card h3 {
+            margin-top: 14px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2933;
+            text-align: center;
+        }
+
+
+        .home-university {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-top: 4px;
+        }
+
+        .guide {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+
+        .topic {
+            margin-top: 14px;
+            padding: 10px 14px;
+            background: #92d9bc;
+            border-left: 4px solid #c61818;
+            border-radius: 8px;
+            font-size: 1.0rem;
+            color: #0c3257;
+            font-weight: 500;
+        }
+
+
+        .year {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        /* .year, */
+        .role {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        /* ----------- FOOTER ----------- */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* ----------- DARK MODE ----------- */
+        /* @media (prefers-color-scheme: dark) { */
+        /* :root { */
+        /* --bg: #0f172a; */
+        /* --card-bg: #1e293b; */
+        /* --text: #e5e7eb; */
+        /* --muted: #9ca3af; */
+        /* } */
+
+        /* .hero { */
+        /* color: #fff; */
+        /* } */
+        /* } */
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Backgrounds */
+                --bg: #0f172a;
+                --card-bg: #1e293b;
+
+                /* Text */
+                --text: #e5e7eb;
+                --muted: #9ca3af;
+
+                /* Accent */
+                --primary: #818cf8;
+
+                /* Badges */
+                --badge-bg-intern: #719444;
+                --badge-text-intern: #111902;
+
+                --badge-bg-master: #4f8598;
+                --badge-text-master: #011314;
+            }
+
+            /* Hero section */
+            .hero {
+                color: #f8fafc;
+            }
+
+            /* Avatar fallback background */
+            .avatar {
+                background-color: #334155;
+            }
+
+            /* Card shadow adjustment */
+            .card {
+                box-shadow: 0 12px 30px rgba(218, 147, 147, 0.719);
+            }
+        }
+
+        /* ===== External Intern Card Enhancements ===== */
+
+        .card.external .home-university {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #dd1519;
+            margin-top: 4px;
+        }
+
+        .card.external .guide,
+        .card.external .topic {
+            font-size: 0.8rem;
+            color: #4c4f09;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+
+        .card.external .topic {
+            font-style: oblique;
+            background: rgba(235, 238, 238, 0.35);
+            padding: 4px 6px;
+            border-radius: 6px;
+        }
+
+        .card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f4eaea;
+            background: #110000;
+            margin: 8px auto 10px;
+            display: block;
+        }
+
+        /* ===== Sync Image Hover with Card ===== */
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* When card is hovered, image reacts */
+        .card:hover img {
+            transform: scale(1.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== Batch Section Styling ===== */
+
+        .batch-section {
+            margin: 3rem 0;
+        }
+
+        .batch-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            padding-left: 8px;
+            border-left: 5px solid #2563eb;
+        }
+
+        /* keeps existing card layout intact */
+        .batch-section .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+
+        /* ===== Masters Batch Styling ===== */
+        .batch-section {
+            margin: 3.5rem 0;
+        }
+
+        .batch-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.6rem;
+            padding-left: 10px;
+            border-left: 6px solid #7c3aed;
+        }
+
+        .student-card {
+            background: #f6f8f7;
+            border-radius: 18px;
+            padding: 28px 24px;
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.08),
+                0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.35s ease;
+            position: relative;
+        }
+
+        .student-card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card {
+            background: #f6f8f7;
+            border-radius: 18px;
+            padding: 28px 24px 26px;
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.08),
+                0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <img src="image/cusb.png" alt="CUSB Logo" class="hero-logo">
+
+            <div class="hero-text">
+                <h1>HEP-Detector Development Lab</h1>
+                <h2>CENTRAL UNIVERSITY OF SOUTH BIHAR</h2>
+                <p>Internship & Master’s Students — Learning. Growing. Excelling.</p>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Internship Students Section -->
+    <section class="internship">
+        <h2 class="section-title">
+            <hr>Internship Programme</hr>
+        </h2>
+        <div class="grid">
+
+            <!-- Card Template: Change image, name, role, dates -->
+            <div class="card intern external">
+                <span class="badge intern">Summer Internship</span>
+                <div class="avatar">
+                    <img src="image/internships/image_1.png" alt="Akinchan Kundu" />
+                </div>
+                <h3>Akinchan Kundu</h3>
+                <p class="home-university">Presidency College</p>
+                <p class="guide">Guide: Prof. Venktesh Singh</p>
+                <p class="topic">Topic: Neurino-antineutrino oscillation in LIV
+                </p>
+                <p class="year">2025</p>
+            </div>
+
+            <div class="card intern external">
+                <span class="badge intern">Summer Internship</span>
+                <div class="avatar">
+                    <img src="image/internships/image_1.png" alt="Rishu Raj" />
+                </div>
+                <h3>Rishu Raj</h3>
+                <p class="home-university">IISER Mohali</p>
+                <p class="guide">Guide: Prof. Venktesh Singh</p>
+                <p class="topic">Topic: Cosmic ray Counter DAQ
+                </p>
+                <p class="year">2025</p>
+            </div>
+
+            <div class="card intern external">
+                <span class="badge intern">Summer Internship</span>
+                <div class="avatar">
+                    <img src="image/internships/image_1.png" alt="Gaurav Raj">
+                </div>
+                <h3>Gaurav Raj</h3>
+                <p class="home-university">NIT Meghalaya</p>
+                <p class="guide">Guide: Prof. Venktesh Singh</p>
+                <p class="topic">Topic: Neutrino OScillation in Longbaseline Experiments</p>
+                <p class="year">2025</p>
+            </div>
+
+            <div class="card intern external">
+                <span class="badge intern">Summer Internship</span>
+                <div class="avatar">
+                    <img src="image/internships/image_1.png" alt="Student Photo">
+                </div>
+                <h3>Prashant Gautam</h3>
+                <p class="home-university">Rajasthan University</p>
+                <p class="guide">Guide: Prof. Venktesh Singh</p>
+                <p class="topic">Topic: Fabrication of Plastic Scintillator</p>
+                <p class="year">2025</p>
+            </div>
+            <!-- <div class="card"> -->
+            <!-- <span class="badge intern">Intern</span> -->
+            <!-- <div class="avatar"> -->
+            <!-- <img src="image/internships/image_1.png" alt="Prashant Gautam" /> -->
+            <!-- </div> -->
+            <!-- <h3>Prashant Gautam</h3> -->
+            <!-- <p class="role">Rajasthan University</p> -->
+            <!-- <p class="role">Summer Internship Student</p> -->
+            <!-- <p class="role">Guide - Prof. Venktesh Singh</p> -->
+            <!-- <p class="role">Topic - Fabrication of Plastic Scintilator</p> -->
+            <!-- <p class="year">2025</p> -->
+            <!-- </div> -->
+            <!-- Add more internship cards as needed -->
+
+        </div>
+    </section>
+
+    <!-- Master's Students Section -->
+    <section class="masters">
+        <h2 class="section-title">Master's Students</h2>
+        <hr>
+
+        <!-- Batch 2020–2022 -->
+        <section class="batch-section">
+            <h3 class="batch-title">Batch 2020–2022</h3>
+            <div class="grid">
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2020_2022/Rituraj -2020.jpg" alt="Rituraj" />
+                    </div>
+                    <h3>Rituraj Pattanayak</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Characterization of NaI and HPGe detectors</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2020-2022</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Batch 2021–2023 -->
+        <section class="batch-section">
+            <h3 class="batch-title">Batch 2021–2023</h3>
+            <div class="grid">
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Ashish Kumar Sharma</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Geant4 Simulation of Cosmic Ray Induced neutron interaction in Bismuth
+                        Germanate
+                        (Bi4Ge3O12) (BGO)
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2021-2023</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2021_2023/SUNIL KUMAR SAINI-2021.jpg"
+                            alt="SUNIL KUMAR SAINI" />
+                    </div>
+                    <h3>Sunil Kumar Saini</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Design, Development and Characterization of Liquid Organic Scintillation
+                        Detector</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2021-2023</p>
+                </div>
+                <!-- <div class="card masters">...</div> -->
+            </div>
+        </section>
+
+        <!-- Batch 2022–2024 -->
+        <section class="batch-section">
+            <h3 class="batch-title"> Batch 2022–2024</h3>
+            <div class="grid">
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2022_2024/Amarendra-2022.jpeg" alt="Amarendra" />
+                    </div>
+                    <h3>Amarendra Maharana</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: To calculation of the muon flux through different materials
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2022-2024</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2022_2024/Jagyasini Behera-2022.jpg"
+                            alt="Jagyasini Behera" />
+                    </div>
+                    <h3>Jagyasini Behera</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Fabrication of Plastic ScintillatorCalibration of the High Purity
+                        Germanium
+                        Detector and Optimizion of Event Selection Criteria
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2022-2024</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2022_2024/Manash Pr Baruah-2022.jpg"
+                            alt="Manash Pr Baruah" />
+                    </div>
+                    <h3>Manash Pr Baruah</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Characterization of a Sodium Iodide (Thallium) [NaI(Tl)] Inorganic
+                        Scintillator
+                        Detector
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2022-2024</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Sibatmika Babu</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Review the images reconstruction method and Design a Positron Emission
+                        Tomography system using open Gate Code
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2022-2024</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Suryabarta Saha</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Calculation of Millicharged particle Electron scattering Cross-section
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2022-2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Batch 2023–2025 -->
+        <section class="batch-section">
+            <h3 class="batch-title"> Batch 2023–2025</h3>
+            <div class="grid">
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Ranajit Jana</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Nitin Chandra</p>
+                    <p class="topic">Topic: A quantum interaction of particle-detector interaction in detection of
+                        prticles
+                    </p>
+
+                    <p class="year"> 2023-2025</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Bharti Singh</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Development Of Cost-Effective Indigenous Resistive Coating For Resistive
+                        Plate
+                        Chamber
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2023-2025</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Subodh Kumar Yadav</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Effect of isotropic Lorentz invariance parameters on the oscillation of
+                        neutrino
+                        flavour in Long baseline neutrino
+                        experiment (DUNE, T2HK, T2HKK) using GLoBEs
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+
+                <div class="card masters"><span class="badge master">Master of
+                        Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2023_2025/arpita_singh_2023.jpg" alt="Arpita Singh" />
+                    </div>
+                    <h3>Arpita Singh</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Gas Flow Pattern in Resistive Plate
+                        Chamber using COMSOL</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2023-2025</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Prateeksha Kumari</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Characterization of Inorganic(NaI) Scintillation Detector
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2023_2025/sankhadeep_das_2023.jpg" alt="Sankhadeep Das" />
+                    </div>
+                    <h3>Sankhadeep Das</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Unraveling the delta CP tension between NOvA and T2K Experiment</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2023-2025</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2023_2025/tanmoy_koley_2023.jpg" alt="Tanmoy Koley" />
+                    </div>
+
+
+                    <h3>Tanmoy Koley</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Study of signal characteristics of RPC using Garfield++, design of
+                        ohmmeter
+                        using Arduino to measure the resistance
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2023-2025</p>
+                </div>
+                <!-- <div class="card masters"></div> -->
+            </div>
+        </section>
+
+        <!-- Batch 2024–2026 -->
+        <section class="batch-section">
+            <h3 class="batch-title">M.Sc. Physics Batch 2024–2026</h3>
+            <div class="grid">
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2024_2026/satyanand_2024.jpg" alt="x" />
+                    </div>
+                    <h3>Satyanand Satish</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Nitin Chandra</p>
+                    <p class="topic">Topic: Theoretical understanding of Quantum mechanics.</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Smruti Ranjan Bindhani</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Medical imaging on Positron emission tomography
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Satyam Das</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Feynman diagram</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Abhisek Roy Barman</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: RPC Simulation work</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Ashim Kumar Mondal</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Cosmic rays detection using plastic scintillator
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Riya Kumari Karn</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Data Analysis using Root
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Ritesh Kumar Palai</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Quantum computing in Agassi model
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Nibha kumari</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Data analysis of HPGe detector
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Bharathi PK</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Probing neutron star thermonuclear bursts through AstroSat LAXPC</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+
+                <div class="card masters"><span class="badge master">Master of
+                        Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Anupam Pal</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Gravitational Wave</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/internships/image_1.png" alt="x" />
+                    </div>
+                    <h3>Dinesh Kumar Mahanta</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh</p>
+                    <p class="topic">Topic: Digital Gas Flow Controller and Gas mixer Unit
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2024_2026/Shalom Pani-2024.jpg" alt="x" />
+                    </div>
+                    <h3>P. Shalom Paul</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Simulation of Gaseous Spherical Detector Using Geant4</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2024_2026/Gaurav Goswami-2024.jpg" alt="Gaurav Goswami" />
+                    </div>
+                    <h3>Gaurav Goswami</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Development of Cost - Effective Indigenous Resistive Plate Chamber</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2024_2026/Atharul Mustafa-2024.jpg" alt="Atharul Mustafa" />
+                    </div>
+                    <h3>Atharul Mustafa</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Modelling and Simulation of the Performance Analysis for peltier module in
+                        cooling system</p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <div class="card masters"><span class="badge master">Master of Science</span>
+                    <div class="avatar">
+                        <img src="image/msc_specialization/2024_2026/Abhishek Kumar Jha-2024.jpeg"
+                            alt="Abhishek Kumar Jha" />
+                    </div>
+                    <h3>Abhishek Kumar Jha</h3>
+                    <hr>
+                    <p class="home-university">Central University of South Bihar</p>
+                    <p class="guide">Guide: Prof. Venktesh Singh & Dr. Lakhwinder Singh</p>
+                    <p class="topic">Topic: Application of nuclear techniques for tracking heavy metals and
+                        environmental
+                        pollutants in soil and water
+                    </p>
+                    <p class="role">Nuclear Physics</p>
+                    <p class="year"> 2024-2026</p>
+                </div>
+                <!-- <div class="card masters">...</div> -->
+            </div>
+        </section>
+
+    </section>
+
+
+
+
+
+
+
+    </section>
+    <div class="footer">
+        <hr> "Learning today, leading tomorrow."<br />
+        © Department Portfolio</hr>
+    </div>
+
+</body>
+
+</html>
