@@ -586,6 +586,10 @@ select.form-control {
   border-bottom: 1px solid var(--color-card-border-inner);
 }
 
+
+
+
+
 /* Status indicators - simplified with CSS variables */
 .status {
   display: inline-flex;
@@ -774,84 +778,66 @@ select.form-control {
 
 
 
-/*Navigation Bar*/
-
+/* Navbar (Theme Aware) */
 .navbar {
   width: 100%;
-  background: #222;
-  font-family: Arial, sans-serif;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav-menu {
   display: flex;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
-  justify-content: space-between;
-  /* new */
-
   width: 100%;
-  /* new */
-
 }
 
-.nav-menu>li {
+.nav-menu > li {
   position: relative;
-  /* Needed for dropdown */
   flex-grow: 1;
-  /* new */
   text-align: center;
-  /* new */
 }
 
-.nav-menu>li>a {
+.nav-menu > li > a {
   display: block;
   padding: 16px 20px;
-  color: #fff;
+  color: var(--color-text);
   text-decoration: none;
-  transition: background 0.3s;
-  width: 100%;
-  /* new */
+  transition: background var(--duration-fast), color var(--duration-fast);
 }
 
-.nav-menu>li>a.active,
-.nav-menu>li>a:hover {
-  background: #444;
-  color: #ffd700;
+.nav-menu > li > a:hover,
+.nav-menu > li > a.active {
+  background: var(--color-secondary);
+  color: var(--color-primary);
 }
 
+/* Dropdown */
 .dropdown-content {
   display: none;
   position: absolute;
-  left: 0;
   top: 100%;
-  background: #333;
+  left: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   min-width: 180px;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .dropdown-content li a {
   padding: 12px 20px;
-  color: #fff;
-  background: #333;
-  text-decoration: none;
   display: block;
-  transition: background 0.3s;
-  white-space: nowrap;
+  color: var(--color-text);
 }
 
 .dropdown-content li a:hover {
-  background: #444;
-  color: #ffd700;
+  background: var(--color-secondary);
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-/*Navigation Bar*/
-
 
 
 
@@ -874,11 +860,10 @@ select.form-control {
 .mySlides img {
   width: 100%;
   height: 450px;
-  /* you can change the height */
   object-fit: scale-down;
-  background: #6c8661;
-  /* optional, keeps empty space black */
+  background: var(--color-surface);
 }
+
 
 .prev,
 .next {
@@ -1184,14 +1169,10 @@ select.form-control {
 
 .faculty-card,
 .lab-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background: #242424;
-  /* or your desired color */
-  border-radius: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
 }
+
 
 .circle-photo a {
   cursor: pointer;
@@ -1728,357 +1709,7 @@ html {
 
 
 
-/*extra and additional fixing the page*/
-/* ================================================= */
-/* GLOBAL THEME VARIABLES – LIGHT MODE */
-/* ================================================= */
 
-:root {
-  --page-bg: #f4f6f8;
 
-  --section-bg-main: #ffffff;
-  --section-bg-soft: #eef3f7;
-  --section-bg-warm: #fdf6ec;
 
-  --card-bg: #ffffff;
-  --card-border: rgba(0, 0, 0, 0.08);
-  --card-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-}
-
-/* ================================================= */
-/* DARK MODE VARIABLES */
-/* ================================================= */
-
-body.dark-mode {
-  --page-bg: #0f172a;
-
-  --section-bg-main: #111827;
-  --section-bg-soft: #1f2937;
-  --section-bg-warm: #2a2a1f;
-
-  --card-bg: #1e293b;
-  --card-border: rgba(255, 255, 255, 0.1);
-  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5f5;
-}
-
-/* ================================================= */
-/* PAGE & SECTION BACKGROUND */
-/* ================================================= */
-
-body {
-  background-color: var(--page-bg);
-  color: var(--text-primary);
-}
-
-section {
-  padding: 80px 0;
-  background-color: var(--section-bg-main);
-}
-
-/* Soft sections */
-.alumni,
-.former-members,
-.lab-members {
-  background-color: var(--section-bg-soft);
-}
-
-/* Warm highlight section */
-.internships {
-  background-color: var(--section-bg-warm);
-}
-
-/* ================================================ */
-/* CARD CONTRAST – CORE FIX */
-/* ================================================= */
-
-.lab-card,
-.faculty-card,
-.research-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--card-shadow);
-  color: var(--text-primary);
-  border-radius: 14px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover */
-.lab-card:hover,
-.faculty-card:hover,
-.research-card:hover {
-  transform: translateY(-6px);
-}
-
-/* ================================================= */
-/* CARD TEXT READABILITY */
-/* ================================================= */
-
-.lab-card h4,
-.faculty-card h4,
-.research-card h4 {
-  color: var(--text-primary);
-}
-
-.lab-card p,
-.faculty-card p,
-.research-card p {
-  color: var(--text-secondary);
-}
-
-/* ================================================= */
-/* PROFILE IMAGE CONTRAST */
-/* ================================================= */
-
-.circle-photo {
-  background-color: var(--card-bg);
-  border: 3px solid var(--card-border);
-}
-
-/* ===== FORCE TEXT VISIBILITY INSIDE CARDS ===== */
-
-.lab-card h4,
-.lab-card p,
-.faculty-card h4,
-.faculty-card p,
-.research-card h4,
-.research-card p {
-  color: #2e3e57;
-}
-
-/*for dark mode on/off*/
-
-.theme-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--card-bg);
-  color: var(--text-primary);
-  border: 1px solid var(--card-border);
-  padding: 10px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: var(--card-shadow);
-}
-
-/* ===== DARK MODE TOGGLE BUTTON ===== */
-
-.theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  z-index: 99999;
-
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-
-
-/* ========================================= */
-/* FINAL TEXT VISIBILITY FIX (LIGHT + DARK) */
-/* ========================================= */
-
-body:not(.dark-mode) .lab-card h4,
-body:not(.dark-mode) .lab-card p,
-body:not(.dark-mode) .faculty-card h4,
-body:not(.dark-mode) .faculty-card p {
-  color: #1e293b !important;
-}
-
-body.dark-mode .lab-card h4,
-body.dark-mode .lab-card p,
-body.dark-mode .faculty-card h4,
-body.dark-mode .faculty-card p {
-  color: #f8fafc !important;
-}
-
-body.dark-mode .lab-card,
-body.dark-mode .faculty-card {
-  background-color: #1e293b !important;
-}
-
-section h2,
-.section-title {
-  color: #1e293b;
-}
-
-body.dark-mode section h2,
-body.dark-mode .section-title {
-  color: #f8fafc;
-}
-
-/* ================================================= */
-/* FINAL VISIBILITY & CONTRAST FIX – GUARANTEED */
-/* ================================================= */
-
-/* ---------- LIGHT MODE CARD TEXT (ALL CARDS) ---------- */
-body:not(.dark-mode) .lab-card,
-body:not(.dark-mode) .faculty-card,
-body:not(.dark-mode) .research-card {
-  color: #1e293b !important;
-}
-
-body:not(.dark-mode) .lab-card h4,
-body:not(.dark-mode) .lab-card p,
-body:not(.dark-mode) .faculty-card h4,
-body:not(.dark-mode) .faculty-card p,
-body:not(.dark-mode) .research-card h4,
-body:not(.dark-mode) .research-card p {
-  color: #1e293b !important;
-}
-
-/* ---------- BUTTONS / LINKS INSIDE CARDS ---------- */
-body:not(.dark-mode) .lab-card a,
-body:not(.dark-mode) .faculty-card a {
-  color: #1e293b !important;
-  border-color: #1e293b !important;
-}
-
-/* ---------- DARK MODE CARD TEXT ---------- */
-body.dark-mode .lab-card,
-body.dark-mode .faculty-card,
-body.dark-mode .research-card {
-  background-color: #1e293b !important;
-  color: #f8fafc !important;
-}
-
-body.dark-mode .lab-card h4,
-body.dark-mode .lab-card p,
-body.dark-mode .faculty-card h4,
-body.dark-mode .faculty-card p {
-  color: #f8fafc !important;
-}
-
-/* ---------- SECTION HEADINGS (ALL SECTIONS) ---------- */
-section h2,
-.section-title {
-  color: #1e293b !important;
-}
-
-body.dark-mode section h2,
-body.dark-mode .section-title {
-  color: #f8fafc !important;
-}
-
-/* ---------- DARK BACKGROUND SECTIONS (LIKE LAB FACILITIES) ---------- */
-.lab-facilities,
-.dark-section {
-  color: #5a7794;
-}
-
-.lab-facilities h2,
-.dark-section h2 {
-  color: #f8fafc !important;
-}
-
-/* FINAL FORCE VISIBILITY */
-
-.lab-card,
-.faculty-card,
-.lab-card *,
-.faculty-card * {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/*modification in dark mode*/
-[data-color-scheme="dark"] a {
-  color: var(--color-teal-300);
-}
-
-[data-color-scheme="dark"] h1,
-[data-color-scheme="dark"] h2,
-[data-color-scheme="dark"] h3,
-[data-color-scheme="dark"] h4,
-[data-color-scheme="dark"] h5,
-[data-color-scheme="dark"] h6 {
-  color: var(--color-gray-200);
-}
-
-[data-color-scheme="dark"] .publication-title,
-[data-color-scheme="dark"] .section-title {
-  color: var(--color-gray-200);
-}
-
-/* ===================================== */
-/* 🔥 DARK MODE VISIBILITY – FINAL FIX */
-/* ===================================== */
-
-[data-color-scheme="dark"] a {
-  color: #5eead4;
-}
-
-[data-color-scheme="dark"] a:hover {
-  color: #2dd4bf;
-}
-
-[data-color-scheme="dark"] h1,
-[data-color-scheme="dark"] h2,
-[data-color-scheme="dark"] h3,
-[data-color-scheme="dark"] h4,
-[data-color-scheme="dark"] h5,
-[data-color-scheme="dark"] h6 {
-  color: #f8fafc;
-}
-
-/* Publications specific */
-[data-color-scheme="dark"] .publication-content h4 {
-  color: #f8fafc;
-}
-
-[data-color-scheme="dark"] .publication-authors,
-[data-color-scheme="dark"] .publication-journal {
-  color: #cbd5e1;
-}
-
-[data-color-scheme="dark"] .publication-doi {
-  color: #7dd3fc;
-}
-
-/* ================================================= */
-/* 🔒 FINAL OVERRIDE – ALIGN WITH REAL DARK MODE */
-/* ================================================= */
-
-[data-color-scheme="dark"] .lab-card,
-[data-color-scheme="dark"] .faculty-card,
-[data-color-scheme="dark"] .research-card,
-[data-color-scheme="dark"] .member-card {
-  background-color: var(--color-surface) !important;
-  color: var(--color-text) !important;
-}
-
-[data-color-scheme="dark"] .lab-card h1,
-[data-color-scheme="dark"] .lab-card h2,
-[data-color-scheme="dark"] .lab-card h3,
-[data-color-scheme="dark"] .lab-card h4,
-[data-color-scheme="dark"] .faculty-card h4,
-[data-color-scheme="dark"] .research-card h4 {
-  color: var(--color-text) !important;
-}
-
-[data-color-scheme="dark"] .lab-card p,
-[data-color-scheme="dark"] .faculty-card p,
-[data-color-scheme="dark"] .research-card p {
-  color: var(--color-text-secondary) !important;
-}
-
-/* Buttons / links inside cards */
-[data-color-scheme="dark"] .btn,
-[data-color-scheme="dark"] .btn--outline {
-  color: var(--color-text) !important;
-  border-color: var(--color-border) !important;
-}
-
-[data-color-scheme="dark"] .btn:hover {
-  background-color: var(--color-secondary-hover);
-}
