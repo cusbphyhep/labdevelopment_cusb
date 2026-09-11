@@ -1715,12 +1715,43 @@ html {
 }
 
 
-/* ===== SEPARATION: LAB MEMBERS → EXCHANGE ===== */
+/* =========================================
+   SEPARATE MEMBER SECTIONS
+   ========================================= */
 
+/* Lab Members */
 .lab-members {
+    background: var(--color-bg-2) !important;
+    padding-top: 48px !important;
     padding-bottom: 48px !important;
 }
 
-.lab-members + .visiting-researchers {
+/* Visiting / Exchange Researchers */
+.visiting-researchers {
+    background: var(--color-bg-4) !important;
     padding-top: 48px !important;
+    padding-bottom: 48px !important;
+}
+
+/* Ph.D. Alumni */
+.past-members-section {
+    background: var(--color-bg-5) !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+}
+
+/* Lab Facilities */
+.facilities {
+    background: var(--color-bg-6) !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+}
+
+
+/* Space between section title and cards */
+.lab-members .section-title,
+.visiting-researchers .section-title,
+.past-members-section .section-title,
+.facilities .section-title {
+    margin-bottom: 48px !important;
 }
