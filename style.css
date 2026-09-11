@@ -1706,3 +1706,21 @@ html {
     min-height: auto;
   }
 }
+
+
+/* Gap below Visiting / Exchange Researcher cards */
+
+.visiting-researchers .members-grid {
+    margin-bottom: 48px !important;
+}
+
+
+/* ===== SEPARATION: LAB MEMBERS → EXCHANGE ===== */
+
+.lab-members {
+    padding-bottom: 48px !important;
+}
+
+.lab-members + .visiting-researchers {
+    padding-top: 48px !important;
+}
