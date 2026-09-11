@@ -1711,20 +1711,20 @@ html {
 
 .visiting-researchers {
     background: #eef8ff !important;
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
 }
 
 .past-members-section {
     background: #f8efff !important;
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
 }
 
 .facilities {
     background: #fff4e8 !important;
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
 }
 
 
