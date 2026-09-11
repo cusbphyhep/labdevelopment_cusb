@@ -1709,35 +1709,31 @@ html {
 
 
 /* =========================================
-           SECTION DIFFERENTIATION 
+   DIFFERENT SECTION BACKGROUNDS
    ========================================= */
 
-.research-areas {
-  background: var(--color-bg-4);
-  box-shadow: inset 0 1px 0 var(--color-card-border);
+/* Visiting / Exchange Researchers */
+.visiting-researchers {
+    background: var(--color-bg-4);
 }
 
-.faculty {
-  background: var(--color-bg-1);
-  box-shadow: inset 0 1px 0 var(--color-card-border);
+/* Ph.D. Alumni */
+.past-members-section {
+    background: var(--color-bg-5);
 }
 
-.publications {
-  background: var(--color-bg-3);
-  box-shadow: inset 0 1px 0 var(--color-card-border);
-}
-
-.lab-members {
-  background: var(--color-bg-2);
-  box-shadow: inset 0 1px 0 var(--color-card-border);
-}
-
+/* Lab Facilities */
 .facilities {
-  background: var(--color-bg-5);
-  box-shadow: inset 0 1px 0 var(--color-card-border);
+    background: var(--color-bg-6);
 }
 
-.collaborations {
-  background: var(--color-bg-6);
-  box-shadow: inset 0 1px 0 var(--color-card-border);
+
+/* =========================================
+   EXTRA SPACE FOR SECTION TITLES
+   ========================================= */
+
+.visiting-researchers .section-title,
+.past-members-section .section-title,
+.facilities .section-title {
+    margin-bottom: 32px;
 }
