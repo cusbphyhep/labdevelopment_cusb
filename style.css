@@ -781,10 +781,6 @@ select.form-control {
   margin: auto;
 }
 
-/* .mySlides { */
-/* display: none; */
-/* } */
-
 .mySlides img {
   width: 100%;
   height: 450px;
@@ -1706,16 +1702,7 @@ html {
   border-radius: var(--radius-base);
 }
 
-/* Responsive Fix */
-@media (max-width: 768px) {
-  .members-grid {
-    grid-template-columns: 1fr;
-  }
-
   .member-card {
     min-height: auto;
   }
 }
-
-
-
