@@ -1707,31 +1707,44 @@ html {
   }
 }
 
-/* ===== DIFFERENT BACKGROUND FOR 3 SECTIONS ===== */
 
-.visiting-researchers {
-    background: #eef8ff !important;
-    padding-top: 48px !important;
-    padding-bottom: 48px !important;
-}
 
-.past-members-section {
-    background: #f8efff !important;
-    padding-top: 48px !important;
-    padding-bottom: 48px !important;
-}
+/* ===== FIX VISITING / EXCHANGE SECTION SPACING ===== */
 
-.facilities {
-    background: #fff4e8 !important;
+section.visiting-researchers.section-exchange.member-section {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
 }
 
 
-/* ===== SPACE BELOW SECTION TITLES ===== */
+/* Space between title and its underline/cards */
+section.visiting-researchers.section-exchange.member-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 48px !important;
+}
 
-.visiting-researchers .section-title,
-.past-members-section .section-title,
-.facilities .section-title {
-    margin-bottom: 48px;
+
+/* ===== FIX PH.D. ALUMNI SECTION SPACING ===== */
+
+section.past-members-section.section-alumni.member-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+}
+
+section.past-members-section.section-alumni.member-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 48px !important;
+}
+
+
+/* ===== FIX LAB FACILITIES SECTION SPACING ===== */
+
+section.facilities {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+}
+
+section.facilities .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 48px !important;
 }
