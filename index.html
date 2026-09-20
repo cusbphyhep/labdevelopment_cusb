@@ -1494,19 +1494,20 @@
 
     <script src="app.js"></script>
 
-    <script>
+  
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const navbar = document.querySelector(".navbar");
     const navLinks = document.querySelectorAll(".nav-menu > li > a");
     const dropdowns = document.querySelectorAll(".nav-menu > li.dropdown");
 
-    if (!navbar || !navLinks.length) return;
+    if (!navbar) return;
 
 
-    /* =====================================
-       ACTIVE NAVBAR ITEM
-       ===================================== */
+    /* =================================================
+       ACTIVE MAIN NAVIGATION
+       ================================================= */
 
     navLinks.forEach(function (link) {
 
@@ -1523,32 +1524,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* =====================================
+    /* =================================================
        MOBILE DROPDOWN
-       ===================================== */
+       ================================================= */
 
     dropdowns.forEach(function (dropdown) {
 
-        const mainLink = dropdown.querySelector(":scope > a");
-        const submenu = dropdown.querySelector(":scope > .dropdown-content");
+        const mainLink = dropdown.children[0];
+        const submenu = dropdown.querySelector(".dropdown-content");
+
+        /*
+           If this dropdown has no submenu,
+           leave its normal link behavior alone.
+        */
 
         if (!mainLink || !submenu) return;
+
 
         mainLink.addEventListener("click", function (event) {
 
             if (window.innerWidth <= 768) {
 
                 event.preventDefault();
+                event.stopPropagation();
+
+
+                /* Close other dropdowns */
 
                 dropdowns.forEach(function (otherDropdown) {
 
                     if (otherDropdown !== dropdown) {
+
                         otherDropdown.classList.remove("mobile-open");
+
                     }
 
                 });
 
+
+                /* Toggle current dropdown */
+
                 dropdown.classList.toggle("mobile-open");
+
+
+                /* Position dropdown correctly */
+
+                if (dropdown.classList.contains("mobile-open")) {
+
+                    positionMobileDropdown(dropdown, submenu);
+
+                }
+
             }
 
         });
@@ -1556,24 +1582,121 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* =====================================
+    /* =================================================
+       POSITION MOBILE DROPDOWN
+       ================================================= */
+
+    function positionMobileDropdown(dropdown, submenu) {
+
+        const mainLink = dropdown.children[0];
+
+        const rect = mainLink.getBoundingClientRect();
+
+        const dropdownWidth = Math.min(
+            190,
+            window.innerWidth - 20
+        );
+
+        let left = rect.left;
+
+        /*
+           Prevent dropdown from going outside
+           the right side of the screen.
+        */
+
+        if (left + dropdownWidth > window.innerWidth - 10) {
+
+            left = window.innerWidth - dropdownWidth - 10;
+
+        }
+
+        if (left < 10) {
+
+            left = 10;
+
+        }
+
+        submenu.style.left = left + "px";
+        submenu.style.top = rect.bottom + "px";
+        submenu.style.width = dropdownWidth + "px";
+
+    }
+
+
+    /* =================================================
+       REPOSITION WHEN WINDOW CHANGES
+       ================================================= */
+
+    window.addEventListener("resize", function () {
+
+        dropdowns.forEach(function (dropdown) {
+
+            const submenu = dropdown.querySelector(".dropdown-content");
+
+            if (
+                submenu &&
+                dropdown.classList.contains("mobile-open") &&
+                window.innerWidth <= 768
+            ) {
+
+                positionMobileDropdown(dropdown, submenu);
+
+            }
+
+        });
+
+    });
+
+
+    /* =================================================
        CLOSE DROPDOWN WHEN CLICKING OUTSIDE
-       ===================================== */
+       ================================================= */
 
     document.addEventListener("click", function (event) {
 
-        if (!navbar.contains(event.target)) {
+        if (!event.target.closest(".navbar")) {
 
             dropdowns.forEach(function (dropdown) {
+
                 dropdown.classList.remove("mobile-open");
+
             });
 
         }
 
     });
 
+
+    /* =================================================
+       CLOSE MOBILE DROPDOWN AFTER SUBMENU CLICK
+       ================================================= */
+
+    dropdowns.forEach(function (dropdown) {
+
+        const submenu = dropdown.querySelector(".dropdown-content");
+
+        if (!submenu) return;
+
+        submenu.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                if (window.innerWidth <= 768) {
+
+                    dropdown.classList.remove("mobile-open");
+
+                }
+
+            });
+
+        });
+
+    });
+
 });
 </script>
+
+  
 </body>
 
 </html>
