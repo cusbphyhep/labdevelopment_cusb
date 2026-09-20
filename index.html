@@ -295,6 +295,8 @@
 </head>
 
 <body>
+
+    <div id="top"></div>
     <!--for dark mode on/off-->
 
     <button onclick="toggleDarkMode()" class="theme-toggle">
@@ -305,7 +307,7 @@
     <!--For Navigation Bar-->
     <nav class="navbar">
         <ul class="nav-menu">
-            <li><a href="#" class="active">HOME</a></li>
+           <li><a href="#top" class="active">HOME</a></li>
             <li class="dropdown">
     <a href="#">STAFF <i class="fas fa-caret-right"></i></a>
     <ul class="dropdown-content">
@@ -1496,6 +1498,34 @@
 
   
 <script>
+
+    if (!navbar) return;
+
+/* HOME → TOP OF PAGE */
+const homeLink = document.querySelector('.nav-menu > li:first-child > a');
+
+if (homeLink) {
+    homeLink.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+/* ACTIVE MAIN NAVIGATION */
+navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+        navLinks.forEach(function (item) {
+            item.classList.remove("active");
+        });
+        this.classList.add("active");
+    });
+});
+
+    
 document.addEventListener("DOMContentLoaded", function () {
 
     const navbar = document.querySelector(".navbar");
