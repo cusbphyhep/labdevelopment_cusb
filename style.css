@@ -1779,3 +1779,41 @@ html {
     box-shadow: none !important;
     border-radius: 0 !important;
 }
+
+
+
+/* =========================================
+   MOBILE HORIZONTAL SCROLL INDICATOR
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .navbar::after {
+    content: "→";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-surface) 45%
+    );
+    color: var(--color-primary);
+    font-size: 20px;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+}
