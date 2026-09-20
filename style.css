@@ -1820,9 +1820,10 @@ html {
 
 
 
-/* =========================================
-   FINAL RESPONSIVE + STICKY NAVBAR
-   ========================================= */
+/* =====================================================
+   FINAL RESPONSIVE NAVBAR
+   PC + MOBILE
+   ===================================================== */
 
 .navbar {
     position: sticky;
@@ -1834,52 +1835,99 @@ html {
 }
 
 
-/* ---------- NAVIGATION ROW ---------- */
+/* =====================================================
+   DESKTOP NAVBAR
+   ===================================================== */
 
 .nav-menu {
     display: flex;
     flex-wrap: nowrap;
-
     width: 100%;
-    min-width: 100%;
-
-    overflow-x: auto;
-    overflow-y: visible;
-
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
-
-.nav-menu::-webkit-scrollbar {
-    display: none;
-}
-
-
-/* Keep each menu item intact */
 
 .nav-menu > li {
-    flex: 0 0 auto;
+    position: relative;
+    flex: 1 1 auto;
+    min-width: max-content;
+    text-align: center;
 }
 
-
-/* Keep menu text in one line */
-
 .nav-menu > li > a {
+    display: block;
+    padding: 16px 18px;
+    color: var(--color-text);
+    text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
 }
 
-
-/* Dropdown above other sections */
-
-.dropdown-content {
-    z-index: 10000;
+.nav-menu > li > a:hover,
+.nav-menu > li > a.active {
+    background: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 
-/* =========================================
+/* =====================================================
+   DESKTOP DROPDOWN
+   ===================================================== */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 190px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+
+    box-shadow: var(--shadow-md);
+
+    z-index: 10000;
+}
+
+.dropdown-content li {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content li a {
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+
+    color: var(--color-text);
+    text-decoration: none;
+
+    white-space: nowrap;
+    text-align: left;
+}
+
+.dropdown-content li a:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+
+/* PC: open dropdown on hover */
+.dropdown:hover > .dropdown-content {
+    display: block;
+}
+
+
+/* =====================================================
    MOBILE NAVBAR
-   ========================================= */
+   ===================================================== */
 
 @media (max-width: 768px) {
 
@@ -1891,16 +1939,30 @@ html {
     .nav-menu {
         width: 100%;
         min-width: 100%;
-        padding-right: 34px;
+
+        display: flex;
+        flex-wrap: nowrap;
 
         overflow-x: auto;
-        overflow-y: visible;
+        overflow-y: hidden;
 
-        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+
+        padding-right: 38px;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+        display: none;
     }
 
 
-    /* Mobile menu size */
+    /* Keep every menu item in one row */
+
+    .nav-menu > li {
+        flex: 0 0 auto;
+        min-width: max-content;
+    }
 
     .nav-menu > li > a {
         padding: 12px 14px;
@@ -1910,11 +1972,24 @@ html {
     }
 
 
-    /* Mobile dropdown */
+    /* -------------------------------------------------
+       MOBILE DROPDOWN
+       ------------------------------------------------- */
+
+    .dropdown.mobile-open > .dropdown-content {
+        display: block;
+    }
+
+
+    /*
+       Fixed positioning prevents the dropdown
+       from being clipped by horizontal nav scrolling.
+    */
 
     .dropdown-content {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+
+        top: 0;
         left: 0;
 
         min-width: 190px;
@@ -1923,17 +1998,23 @@ html {
         max-height: 70vh;
         overflow-y: auto;
         overflow-x: hidden;
+
+        margin: 0;
+        padding: 0;
+
+        z-index: 100000;
+    }
+
+    .dropdown-content li a {
+        padding: 13px 16px;
+        font-size: 14px;
+        white-space: normal;
     }
 
 
-    /* Click/tap opened dropdown */
-
-    .dropdown.mobile-open .dropdown-content {
-        display: block;
-    }
-
-
-    /* Right-side scroll indicator */
+    /* -------------------------------------------------
+       MOBILE RIGHT-SIDE SCROLL INDICATOR
+       ------------------------------------------------- */
 
     .navbar::after {
         content: "→";
@@ -1942,7 +2023,7 @@ html {
         right: 0;
         top: 0;
 
-        width: 34px;
+        width: 38px;
         height: 100%;
 
         display: flex;
@@ -1961,15 +2042,14 @@ html {
         font-weight: bold;
 
         pointer-events: none;
-
         z-index: 10001;
     }
 }
 
 
-/* =========================================
+/* =====================================================
    SMALL MOBILE
-   ========================================= */
+   ===================================================== */
 
 @media (max-width: 480px) {
 
@@ -1981,6 +2061,9 @@ html {
     .dropdown-content {
         min-width: 175px;
     }
+
+    .dropdown-content li a {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
 }
-
-
