@@ -1819,3 +1819,168 @@ html {
 }
 
 
+
+/* =========================================
+   FINAL RESPONSIVE + STICKY NAVBAR
+   ========================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+/* ---------- NAVIGATION ROW ---------- */
+
+.nav-menu {
+    display: flex;
+    flex-wrap: nowrap;
+
+    width: 100%;
+    min-width: 100%;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-menu::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Keep each menu item intact */
+
+.nav-menu > li {
+    flex: 0 0 auto;
+}
+
+
+/* Keep menu text in one line */
+
+.nav-menu > li > a {
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+
+/* Dropdown above other sections */
+
+.dropdown-content {
+    z-index: 10000;
+}
+
+
+/* =========================================
+   MOBILE NAVBAR
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        position: sticky;
+        top: 0;
+    }
+
+    .nav-menu {
+        width: 100%;
+        min-width: 100%;
+        padding-right: 34px;
+
+        overflow-x: auto;
+        overflow-y: visible;
+
+        scroll-behavior: smooth;
+    }
+
+
+    /* Mobile menu size */
+
+    .nav-menu > li > a {
+        padding: 12px 14px;
+        font-size: 13px;
+        line-height: 1.3;
+        white-space: nowrap;
+    }
+
+
+    /* Mobile dropdown */
+
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        min-width: 190px;
+        max-width: calc(100vw - 20px);
+
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    /* Click/tap opened dropdown */
+
+    .dropdown.mobile-open .dropdown-content {
+        display: block;
+    }
+
+
+    /* Right-side scroll indicator */
+
+    .navbar::after {
+        content: "→";
+
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        width: 34px;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(
+            to right,
+            transparent,
+            var(--color-surface) 55%
+        );
+
+        color: var(--color-primary);
+
+        font-size: 20px;
+        font-weight: bold;
+
+        pointer-events: none;
+
+        z-index: 10001;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .nav-menu > li > a {
+        padding: 11px 12px;
+        font-size: 12px;
+    }
+
+    .dropdown-content {
+        min-width: 175px;
+    }
+}
+
+
