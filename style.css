@@ -1755,3 +1755,27 @@ html {
 .facilities .section-title {
     margin-bottom: 48px !important;
 }
+
+
+/* PH.D. ALUMNI — CARD REFINEMENT */
+
+.past-members-section .lab-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-24);
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.past-members-section .lab-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.past-members-section .pm-card {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
